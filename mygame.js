@@ -2280,7 +2280,12 @@ async function __wbg_init(module_or_path) {
     __wbg_init_memory(imports);
 
     const { instance, module } = await __wbg_load(await module_or_path, imports);
-
+    const canvas = document.getElementById('wasmCanvas');
+    const gl = canvas.getContext('webgl2');
+    if (!gl) {
+        console.error('WebGL 2 not supported');
+        return;
+    }
     return __wbg_finalize_init(instance, module);
 }
 
