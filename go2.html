@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style>
+    body, html {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="wasmCanvas"></canvas>
+  <script type="module">
+    import init from './go2.js';
+
+    init().then(() => {
+      const canvas = document.getElementById('wasmCanvas');
+      const resizeCanvas = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+    }).catch((error) => {
+      if (!error.message.startsWith("Using exceptions for control flow, don't mind me. This isn't actually an error!")) {
+        throw error;
+      }
+    });
+  </script>
+</body>
+</html>
