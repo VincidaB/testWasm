@@ -7,7 +7,7 @@
 </head>
 <body>
     <script>
-        WebAssembly.instantiateStreaming(fetch('3d_scene.wasm'))
+        WebAssembly.instantiateStreaming(fetch('load_gltf.wasm'))
             .then(({ instance }) => {
                 // Use the instance here
                 console.log(instance.exports);
