@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<style>
+		/* Add your custom styles here */
+	.layout {
+		display: flex;
+		flex-direction: column; /* or row, depending on your layout needs */
+		justify-content: center; /* adjust as needed */
+		align-items: center; /* adjust as needed */
+		height: 100vh; /* adjust as needed */
+	}
+	</style>
+</head>
+<body style="margin: 0px; background-color: #2b2c2f;">
+
+	<div class="layout">
+		<div class="container">
+			<div class="col-md-12">
+				<h1 style="color: aliceblue;">Go2</h1>
+			</div>
+		</div>
+
+		<canvas id="mygame-canvas" width="480" height="720" style="width: 480px; height: 100%; max-width: 512px; min-height: 120px;"></canvas>
+	</div>
+  <script type="module">
+    import init from './go2_canvas.js'
+		
+		const canvasEl = document.getElementById('mygame-canvas');
+  
+		let once = false;
+		const observer_callback = (_mutations, _observer) => {
+			if (!once) {
+				// Lock the canvas aspect ratio to prevent the fit_canvas_to_parent setting from creating a feedback loop causing the canvas to grow on resize
+				canvasEl.style.aspectRatio = canvasEl.attributes.width.value / canvasEl.attributes.height.value;
+				once = true;
+			}
+		};
+
+		const observer = new MutationObserver(observer_callback);
+
+		const config = { attributeFilter: ['width', 'height'] };
+
+		observer.observe(canvasEl, config);
+
+		const progressStatusEl = document.querySelector('[data-progress-status]');
+		const progressFileEl = document.querySelector('[data-progress-file]');
+		const progressBarEl = document.querySelector('[data-progress-bar]');
+		let hideProgressTimeoutId;
+
+		async function loadingBarFetch(resource) {
+			return progressiveFetch(resource, {
+				start: ({ filename }) => {
+					progressStatusEl.style.display = 'block';
+					progressFileEl.textContent = filename;
+
+					if (hideProgressTimeoutId) {
+						clearTimeout(hideProgressTimeoutId);
+					}
+				},
+				update: ({ isIndeterminate, loadedPercent }) => {
+					progressBarEl.classList.toggle('bevy-instance__progress-bar--indeterminate', isIndeterminate);
+					progressBarEl.style.width = loadedPercent + '%';
+				},
+				finish: () => {
+					
+					hideProgressTimeoutId = setTimeout(() => {
+						progressStatusEl.style.display = 'none';
+					}, 50);
+				}
+			})
+		}
+		window.bevyLoadingBarFetch = loadingBarFetch;
+	
+		init().catch((error) => {
+      if (!error.message.startsWith("Using exceptions for control flow, don't mind me. This isn't actually an error!")) {
+        throw error;
+      }
+
+			
+			
+    });
+		
+		
+		
+  </script>
+</body>
+
+</html>
