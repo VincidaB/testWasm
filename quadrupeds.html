@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+	<link rel="manifest" href="./favicon_io/site.webmanifest">
+	<style>
+		/* Add your custom styles here */
+	body {
+      margin: 0;
+      background-color: #2b2c2f;
+      font-family: 'Roboto', sans-serif;
+      height: 100vh; /* adjust as needed */
+    }
+	.layout {
+		display: flex;
+		flex-direction: column; /* or row, depending on your layout needs */
+		justify-content: center; /* adjust as needed */
+		align-items: center; /* adjust as needed */
+		height: 100vh; /* adjust as needed */
+	}
+	body {
+      margin: 0;
+      background-color: #2b2c2f;
+    }
+
+	robot_link {
+		color: aliceblue;
+		text-align: left;
+	}
+
+	robot_link:hover {
+		text-decoration: underline;
+	}
+
+	.grid-layout {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+		gap: 20px;
+    width: calc(50% - 100px); /* Adjusted width to account for padding */
+		padding: 50px;
+		box-sizing: border-box; /* Include padding in the element's width calculation */
+	}	
+
+	.grid-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 500px;
+	}
+	</style>
+	<link rel="stylesheet" href="navbar.css">
+</head>
+<body style="margin: 0px; background-color: #2b2c2f;">
+  <div id="navbar"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+  
+	<div class="layout">
+		<h1 style="color: aliceblue; text-align: left;">Quadrupeds</h1>
+
+		<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+		<div class="grid-layout">
+			<div class="grid-item">
+				<robot_link><a href="./go2" style="color: aliceblue; text-decoration: none;">Unitree GO2</a></robot_link>
+				<model-viewer alt="Unitree GO2" src="assets/models/robot_dog_unitree_go2/scene.gltf" ar environment-image="assets/models/moon_1k.hdr" poster="assets/models/robot_dog_unitree_go2/preview.png" shadow-intensity="1" camera-controls touch-action="pan-y" style="width: 100%; height: 100%; max-width: 512px; min-height: 120px;"></model-viewer>
+			</div>
+			<div class="grid-item">
+				<robot_link><a href="./b2" style="color: aliceblue; text-decoration: none;">Unitree B2</a></robot_link>
+				<model-viewer alt="Unitree B2" src="assets/models/b2/b2.glb" ar environment-image="assets/models/studio_small_08_1k.hdr" poster="assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls touch-action="pan-y" style="width: 100%; height: 100%; max-width: 512px; min-height: 120px;"></model-viewer>
+			</div>
+			<div class="grid-item">
+				<robot_link><a href="./go2" style="color: aliceblue; text-decoration: none;">Boston Dynamics Spot</a></robot_link>
+				<model-viewer alt="Unitree GO2" src="assets/models/spotboston_dynamic_high_poly/spot.glb" ar environment-image="assets/models/moon_1k.hdr" poster="assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls touch-action="pan-y" style="width: 100%; height: 100%; max-width: 512px; min-height: 120px;"></model-viewer>
+			</div>
+			<div class="grid-item">
+				<robot_link><a href="./go2" style="color: aliceblue; text-decoration: none;">Unitree A1</a></robot_link>
+				<model-viewer alt="Unitree GO2" src="assets/models/robot_dog_unitree_go2/scene.gltf" ar environment-image="assets/models/moon_1k.hdr" poster="assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls touch-action="pan-y" style="width: 100%; height: 100%; max-width: 512px; min-height: 120px;"></model-viewer>
+			</div>
+			<div class="grid-item">
+				<robot_link><a href="./go2" style="color: aliceblue; text-decoration: none;">Unitree B1</a></robot_link>
+				<model-viewer alt="Unitree GO2" src="assets/models/robot_dog_unitree_go2/scene.gltf" ar environment-image="assets/models/moon_1k.hdr" poster="assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls touch-action="pan-y" style="width: 100%; height: 100%; max-width: 512px; min-height: 120px;"></model-viewer>
+			</div>
+			<div class="grid-item">
+				<robot_link><a href="./go2" style="color: aliceblue; text-decoration: none;">DEEPRobotics X30</a></robot_link>
+				<model-viewer alt="Unitree GO2" src="assets/models/robot_dog_unitree_go2/scene.gltf" ar environment-image="assets/models/moon_1k.hdr" poster="assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls touch-action="pan-y" style="width: 100%; height: 100%; max-width: 512px; min-height: 120px;"></model-viewer>
+			</div>
+		</div>
+	</div>
+
+	<style>
+		.grid-layout {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 20px;
+			width: 100%;
+			padding: 20px;
+		}
+
+		.grid-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	</style>
+</body>
+
+</html>

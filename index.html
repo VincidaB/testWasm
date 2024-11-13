@@ -3,7 +3,8 @@
 <head>
 	<style>
 		/* Add your custom styles here */
-	body {
+		/* Add your custom styles here */
+    body {
       margin: 0;
       background-color: #2b2c2f;
       font-family: 'Roboto', sans-serif;
@@ -16,10 +17,12 @@
 		align-items: center; /* adjust as needed */
 		height: 100vh; /* adjust as needed */
 	}
-	body {
-      margin: 0;
-      background-color: #2b2c2f;
-    }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 	</style>
 	<link rel="stylesheet" href="navbar.css">
 </head>
@@ -33,9 +36,9 @@
       });
   </script>
 
-	<div class="layout">
+	<div class="container">
+    <h1 style="color: aliceblue; text-align: left;">Robot visualisation</h1>
 		<div class="container">
-				<h1 style="color: aliceblue; text-align: left;">Robot visualisation</h1>
 
         <h0 style="color: aliceblue; text-align: left;">This website aims to be an easy way to visualize different quadruped and humnoid robots.
         </h0>
@@ -46,11 +49,8 @@
           <a href="/go2" style="color: aliceblue; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Unitree GO2</a>
         </h3></h3>
         <div style="color: aliceblue; text-align: center;">
-        <canvas id="mygame-canvas" width="480" height="720" style="width: 480px; height: 100%; max-width: 512px; min-height: 120px;"></canvas>
         </div>
       </div>
-      <!-- Use it like any other HTML element -->
-
 
 	</div>
   <div class="layout">
@@ -67,27 +67,7 @@
     "></model-viewer>
     </model-viewer>
   </div>
-  <script type="module">
-		import init from './go2_canvas.js'
-		
-		init().catch((error) => {
-      if (!error.message.startsWith("Using exceptions for control flow, don't mind me. This isn't actually an error!")) {
-        throw error;
-      }
-			
-    });
-		
-  </script>
 
-  <script>
-    import init from './mygame.js'
-    init().catch((error) => {
-      if (!error.message.startsWith("Using exceptions for control flow, don't mind me. This isn't actually an error!")) {
-        throw error;
-      }
-			
-    });
-  </script>
 
   
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
